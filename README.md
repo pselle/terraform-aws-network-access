@@ -9,11 +9,6 @@ module "network_access" {
   source = "./network-access"
 }
 
-resource "aws_key_pair" "key_pair" {
-  key_name   = "deploy-key"
-  public_key = file(var.public_key_path)
-}
-
 resource "aws_instance" "web" {
   ...
   subnet_id                   = module.network_access.subnet_id
